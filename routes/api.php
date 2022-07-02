@@ -1,13 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BikeController;
 use App\Http\Controllers\RewardController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\StopController;
-use App\Http\Resources\BikeResource;
-use App\Http\Resources\RewardColletion;
-use App\Models\Bike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
