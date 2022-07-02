@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->integer('points');
             $table->integer('total_available');
+            $table->integer('redeemed')->default(0);
             $table->string('image')->nullable();
             $table->timestamps();
         });

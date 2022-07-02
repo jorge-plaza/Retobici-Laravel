@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('battery');
             $table->timestamps();
-
-            $table->foreign('id')->references('id')->on('bikes');
+            //$table->foreign('id')->references('id')->on('bikes');
         });
     }
 

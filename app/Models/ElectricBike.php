@@ -14,4 +14,8 @@ class ElectricBike extends Bike
         'id',
         'battery',
     ];
+
+    public function bike(){
+        return $this->morphOne(Bike::class, 'bikeable');
+    }
 }
