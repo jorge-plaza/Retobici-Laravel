@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::post('/stops/{bike}/unlock', [StopController::class, 'unlockBike']);
     Route::post('/stops/{stop}/reserve/{type}', [StopController::class, 'reserveBike']);
-    Route::post('/stops/{stop}/lock', [StopController::class, 'lockBike']);
+    Route::get('/stops/{stop}/lock', [StopController::class, 'lockBike']);
 
     Route::put('/routes/{bike}', [RouteController::class, 'createRoute']);
     Route::post('/routes/finish', [RouteController::class, 'finishRoute']);

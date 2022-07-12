@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property mixed $user_id
  * @property \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed $initial_stop_id
  * @property mixed $bike_id
+ * @property int|mixed $distance
+ * @property int|mixed $duration
  * @method static find(mixed $id)
  */
 class Route extends Model

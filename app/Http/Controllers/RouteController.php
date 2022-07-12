@@ -33,7 +33,6 @@ class RouteController extends Controller
     public function finishRoute(Request $request){
         $route = Route::find($request->id);
         if($request->missing(['duration', 'final_stop'])){
-            //TODO manage Errors
             return false;
         }
 
@@ -65,7 +64,16 @@ class RouteController extends Controller
         return new RouteResource($route);
     }
 
-    private function calculatePoints($route): Int{
-        return 50;
+    public static function calculatePoints($route): Int{
+        if ($route->distance<=0) {
+            return 0;
+        }
+        $points = 50+(($route->distance*10)/100)-(($route->duration*5)/60);
+        if ($points<0) {
+            return 0;
+        }
+        else {
+            return $points;
+        }
     }
 }
