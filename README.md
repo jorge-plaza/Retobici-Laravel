@@ -1,4 +1,4 @@
-#Retobici Back End
+# Retobici Back End
 
 ## Despliegue Back End
 
@@ -26,7 +26,8 @@ instalación y configuración de la gran mayoría de herramientas.
         `vim  /.bashrc`
 
     2.  Exporta la ubicación de la instalación de PHP agregando la
-        siguiente línea `export PATH="/Applications/MAMP/bin/php/php8.0.8/bin:$PATH`.
+        siguiente línea\ 
+        `export PATH="/Applications/MAMP/bin/php/php8.0.8/bin:$PATH`.
 
 ### Instalación PostgreSQL
 
@@ -101,5 +102,5 @@ red WiFi.
     `php artisan serv –host=192.168.65.9 –port=8000`
 
 3.  Migrar la base de datos para generar la estructura de las tablas y
-    poblar la base de datos de información con el comando
+    poblar la base de datos de información con el comando\
     `php artisan migrate:fresh –seed`
