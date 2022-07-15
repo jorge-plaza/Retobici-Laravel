@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,7 +48,21 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            Log::error('exception: '.$e->getTraceAsString());
         });
+    }
+
+    /**
+     * @param Request $request
+     * @param Throwable $e
+     * @return Response|JsonResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): Response|JsonResponse|\Symfony\Component\HttpFoundation\Response
+    {
+        if ($e instanceof SactumAuthenticationException) {
+            return \response()->json('This process requires to be authenticated',401);
+        }
+        return parent::render($request, $e);
     }
 }

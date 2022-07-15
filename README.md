@@ -1,64 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#Retobici Back End
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Despliegue Back End
 
-## About Laravel
+A continuación se muestran los pasos a seguir para instalar e iniciar
+del sistema Back End. Cabe destacar que estos pasos son los referentes
+al entorno que se ha utilizado en el proyecto, en este caso se ha
+utilizado el propio ordenador portátil como servidor, con un sistema
+operativo macOS, por lo que en otro sistema operativo los comandos de
+instalación serán diferentes. MacOS ofrece un sistema de paquetes
+**[Homebrew](https://brew.sh/)** que facilita enormemente el proceso de
+instalación y configuración de la gran mayoría de herramientas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Instalación PHP 8.0.8
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1.  Iniciar un emulador de terminal en cualquier directorio del sistema
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2.  Ejecutar el comando `brew install php`
 
-## Learning Laravel
+3.  Si el sistema no detecta automáticamente la instalación, se puede
+    cargar en el arranque del terminal de la siguiente manera
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    1.  Editar el contenido del fichero `.bashrc` o `.zshrc` dependiendo
+        de que lenguaje de bash utilices. Normalmente ubicado en el
+        directorio principal del usuario. Un comando para editar
+        `vim  /.bashrc`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    2.  Exporta la ubicación de la instalación de PHP agregando la
+        siguiente línea `export PATH="/Applications/MAMP/bin/php/php8.0.8/bin:$PATH`.
 
-## Laravel Sponsors
+### Instalación PostgreSQL
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1.  Iniciar un emulador de terminal en cualquier directorio del sistema
 
-### Premium Partners
+2.  Ejecutar el comando `brew install postgresql`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3.  Iniciar el servicio con `brew services start postgres`
 
-## Contributing
+4.  Entrar en la interfaz de comandos de postgresql con `psql postgres`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  Cambiar la contraseña del usuario que se vaya a usar, en este caso
+    root y de contraseña también root, es recomendable que para un
+    entorno de producción no se utilice ni el usuario root ni una
+    contraseña tan débil. El comando sería
+    `ALTER USER root WITH PASSWORD ’password’;`
 
-## Code of Conduct
+6.  Crear la base de datos con el comando `create database retobici;`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Generar claves API Mapbox
 
-## Security Vulnerabilities
+Para utilizar el sistema de mapas es necesaria una cuenta y generar las
+claves para el uso del sistema. Una vez creada la cuenta, en la
+dirección https://account.mapbox.com/ se pueden generar las dos claves, tanto la pública como la privada, que se
+usarán más adelante en ambas partes del proyecto.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Instalación Back End
 
-## License
+El código se encuentra en este repositorio.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1.  Si no está instalado el sistema de versiones git, el comando para
+    instalarlo en macOS `brew install git`.
+
+2.  Descargar o clonar el repositorio en el directorio deseado con el
+    comando\
+    `git clone https://gitlab.inf.uva.es/jorplaz/plazalazojorge_2022_backend.git`.
+
+Ahora, con el código del repositorio descargado es necesario configurar
+el entorno del proyecto:
+
+1. Desde la carpeta raíz del proyecto copiar el fichero de entorno de
+    ejemplo con `cp .env.example .env`.
+
+2. Agregar los contenidos al fichero .env
+    ``` 
+    DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=retobici
+   DB_USERNAME=root
+   DB_PASSWORD=root
+   MAPBOX_TOKEN=clave pública generada en el paso anterior
+    ```
+
+3. Generar la clave de aplicación con el comando
+    `php artisan key:generate`
+
+4. Instalar las dependencias del fichero `composer.yml` con el comando
+    `composer install`
+
+Con la instalación y la configuración completada solo sería necesario
+lanzar el servidor, para ello hay que tener en cuenta de que el proyecto
+se ha desarrollado de manera local, entonces para que se comunique la
+aplicación Android con el Back End, ambos tienen que estar en la misma
+red WiFi.
+
+1.  Obtener la dirección IP del servidor en la red WiFi con el comando
+    `ifconfig`
+
+2.  Lanzar el servidor apuntando a la IP de la red WiFi obtenida en el
+    paso anterior\
+    `php artisan serv –host=192.168.65.9 –port=8000`
+
+3.  Migrar la base de datos para generar la estructura de las tablas y
+    poblar la base de datos de información con el comando
+    `php artisan migrate:fresh –seed`

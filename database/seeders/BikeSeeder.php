@@ -18,29 +18,36 @@ class BikeSeeder extends Seeder
     {
         $bike = Bike::create([
             'stop_id' => 1,
-            'unlocked' => false
+            'unlocked' => false,
+            'bikeable_id' => 1,
+            'bikeable_type' => 'App\Models\ElectricBike',
         ]);
         ElectricBike::create([
-            'id' => $bike->id,
             'battery' => 60
         ]);
         Bike::create([
             'stop_id' => 1,
-            'unlocked' => false
+            'unlocked' => false,
+            'bikeable_id' => 2,
+            'bikeable_type' => 'App\Models\Bike',
         ]);
 
         $bike = Bike::create([
             'stop_id' => 2,
-            'unlocked' => false
+            'unlocked' => false,
+            'bikeable_id' => 2,
+            'bikeable_type' => 'App\Models\ElectricBike',
         ]);
         ElectricBike::create([
-            'id' => $bike->id,
             'battery' => 70
         ]);
 
         Bike::create([
             'stop_id' => 3,
-            'unlocked' => false
+            'unlocked' => false,
+            'bikeable_id' => 4,
+            'bikeable_type' => 'App\Models\Bike',
         ]);
+
     }
 }

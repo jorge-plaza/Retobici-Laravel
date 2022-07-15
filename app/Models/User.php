@@ -12,6 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @method static create(string[] $array)
+ * @method static find(int $id)
+ * @method static where(string $string, mixed $email)
+ * @property mixed $points
+ * @property mixed $id
  */
 class User extends Authenticatable
 {
@@ -53,5 +57,9 @@ class User extends Authenticatable
 
     public function rewards(): BelongsToMany{
         return $this->belongsToMany(Reward::class, 'user_reward')->withTimestamps();
+    }
+
+    public function reservations(): HasMany{
+        return $this->hasMany(Reservation::class);
     }
 }

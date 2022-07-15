@@ -16,10 +16,13 @@ return new class extends Migration
         Schema::create('bikes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('stop_id')
+                ->nullable()
                 ->index()
                 ->constrained()
                 ->cascadeOnUpdate();
             $table->boolean('unlocked');
+            $table->unsignedBigInteger('bikeable_id');
+            $table->string('bikeable_type');
             $table->timestamps();
         });
     }

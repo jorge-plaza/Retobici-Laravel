@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @method static create(array $array)
+ * @property mixed $redeemed
+ * @property mixed $total_available
+ * @property mixed $points
  */
 class Reward extends Model
 {
@@ -18,6 +21,10 @@ class Reward extends Model
         'description',
         'user_id',
         'reward_id',
+        'points',
+        'total_available',
+        'image',
+        'redeemed',
     ];
 
     public function users(): BelongsToMany{

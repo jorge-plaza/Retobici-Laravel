@@ -48,6 +48,8 @@ return new class extends Migration
                 ->nullable();
             $table->integer('duration')
                 ->nullable();
+            $table->integer('estimated_duration')
+                ->nullable();
             $table->integer('points')
                 ->nullable();
 

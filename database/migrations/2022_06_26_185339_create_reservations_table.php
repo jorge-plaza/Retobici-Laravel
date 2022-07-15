@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('electric_bikes', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->integer('battery');
+            $table->foreignId('user_id');
+            $table->foreignId('stop_id');
+            $table->string('bike_type');
             $table->timestamps();
-            //$table->foreign('id')->references('id')->on('bikes');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('electric_bikes');
+        Schema::dropIfExists('reservations');
     }
 };
