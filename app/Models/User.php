@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @method static create(string[] $array)
+ * @method static find(int $id)
+ * @method static where(string $string, mixed $email)
+ * @property mixed $points
+ * @property mixed $id
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +50,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function routes(): HasMany{
+        return $this->hasMany(Route::class);
+    }
+
+    public function rewards(): BelongsToMany{
+        return $this->belongsToMany(Reward::class, 'user_reward')->withTimestamps();
+    }
+
+    public function reservations(): HasMany{
+        return $this->hasMany(Reservation::class);
+    }
 }

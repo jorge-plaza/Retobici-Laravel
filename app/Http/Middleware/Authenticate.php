@@ -2,20 +2,16 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\SactumAuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
 {
     /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
+     * @throws SactumAuthenticationException
      */
-    protected function redirectTo($request)
+    protected function unauthenticated($request, array $guards)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+        throw new SactumAuthenticationException("To access this endpoint you need to be authenticated",401);
     }
 }
